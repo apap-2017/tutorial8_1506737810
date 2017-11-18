@@ -1,0 +1,13 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<head>
+		<title>Index</title>
+	</head>
+	<body>
+		<h2>Welcome</h2>
+		<a href="/login">Login</a>
+		<a th:if="${#httpServletRequest.isUserInRole('ADMIN')}" href="/course/viewall"><br /> View All Course </a>
+		<a th:if="${#httpServletRequest.isUserInRole('ADMIN')}" href="/student/viewall"><br /> View All Student</a>
+		<a th:if="${#httpServletRequest.isUserInRole('USER')}" href="/student/viewall"><br /> View All Student</a>		
+	</body>
+</html>

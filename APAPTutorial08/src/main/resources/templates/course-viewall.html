@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>View All Students</title>
+        <meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css" />
+		<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    </head>
+    <body class="container">
+    	<h1>All Courses</h1>
+        <h2 th:text=" 'Login as ' + ${#httpServletRequest.remoteUser}">Login as</h2>
+        <form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out"></input>
+		</form>
+    	<div>
+	        <table id="table_id" class="display">
+			    <thead>
+			        <tr>
+			            <th>No</th>
+			            <th>ID Course</th>
+			            <th>Name</th>
+			            <th>Credits</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr th:each="course,iterationStatus: ${course}">
+			            <td th:text="${iterationStatus.index +1}">No</td>
+			            <td th:text="${course.idCourse}"></td>
+			            <td th:text="${course.name}"></td>
+			            <td th:text="${course.credits}"></td> 
+			        </tr>
+			    </tbody>
+			</table>
+    	</div>
+    </body>
+</html>
